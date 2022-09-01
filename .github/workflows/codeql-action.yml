@@ -1,0 +1,33 @@
+name: 'PR Check - Packaging: Download using registries'
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    types:
+    - opened
+    - synchronize
+    - reopened
+    - ready_for_review
+    branches:
+    - main
+  workflow_dispatch: {}
+
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+  
+    - name: Init with registries-auth-tokens
+      uses: github/codeql-action/init@aeisenberg/ghes-pack-download
+      with:
+        tools: ${{ steps.prepare-test.outputs.tools-url }}
+        config-file: ./.github/codeql/codeql-config-registries.yml
+        languages: javascript
+        registries-auth-tokens: https://ghcr.io/v2/=${{ secrets.GITHUB_TOKEN }}
+      env:
+        TEST_MODE: true
