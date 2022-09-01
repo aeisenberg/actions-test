@@ -28,6 +28,6 @@ jobs:
         tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20220901/codeql-bundle.tar.gz
         config-file: ./.github/codeql/codeql-config-registries.yml
         languages: javascript
-        registries-auth-tokens: https://ghcr.io/v2/=${{ secrets.GHES_TOKEN }}
+        registries-auth-tokens: https://containers.aeisenberg-0bb3b45a2419ebce4.gh-quality.net/v2/=${{ secrets.GHES_TOKEN }}
       env:
         TEST_MODE: true
