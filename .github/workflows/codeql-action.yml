@@ -25,7 +25,7 @@ jobs:
     - name: Init with registries-auth-tokens
       uses: github/codeql-action/init@aeisenberg/ghes-pack-download
       with:
-        tools: ${{ steps.prepare-test.outputs.tools-url }}
+        tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/untagged-e22a3e4c9af290cbc8e5/codeql.zip
         config-file: ./.github/codeql/codeql-config-registries.yml
         languages: javascript
         registries-auth-tokens: https://ghcr.io/v2/=${{ secrets.GHES_TOKEN }}
