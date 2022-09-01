@@ -7,4 +7,4 @@ packs:
 
 registries:
   - url: https://containers.aeisenberg-0bb3b45a2419ebce4.gh-quality.net/v2/
-    packages: "*"
+    packages: "*/*"
