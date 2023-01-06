@@ -18,16 +18,18 @@ on:
 jobs:
   codeql:
     runs-on: ubuntu-latest
+    env:
+      TEST_MODE: true
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
-  
+
     - name: Init with registries-auth-tokens
-      uses: github/codeql-action/init@aeisenberg/ghes-pack-download
+      uses: github/codeql-action/init@main
       with:
-        tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20220901/codeql-bundle.tar.gz
-        config-file: ./.github/codeql/codeql-config-registries.yml
+        tools: https://github.com/github/semmle-code/releases/download/untagged-fd9247d3b4be3fdfc8ec/codeql-bundle-linux64.tar.gz
+        config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        registries-auth-tokens: https://containers.aeisenberg-0bb3b45a2419ebce4.gh-quality.net/v2/=${{ secrets.GHES_TOKEN }}
-      env:
-        TEST_MODE: true
+
+    - name: Analyze
+      uses: github/codeql-action/analyze@main

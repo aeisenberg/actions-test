@@ -1,0 +1,3 @@
+name: extensions-integration-test/internal-data-extensions
+dependencies:
+  codeql/javascript-all: "*"
