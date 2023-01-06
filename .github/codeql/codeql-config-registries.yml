@@ -1,10 +1,7 @@
 name: Pack testing in the CodeQL Action
 
 disable-default-queries: true
-packs:
-  javascript:
-    - aeisenberg/private-pack
 
-registries:
-  - url: https://containers.aeisenberg-0bb3b45a2419ebce4.gh-quality.net/v2/
-    packages: "*/*"
+queries:
+  - name: JavaScript queries
+    uses: aeisenberg/custom-coding-standards/find-literals.ql@main

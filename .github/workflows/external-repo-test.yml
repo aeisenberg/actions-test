@@ -1,0 +1,124 @@
+on:
+  push:
+  workflow_dispatch: {}
+
+jobs:
+  pass-with-config-parse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+    - name: Prepare test
+      id: prepare-test
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ./.github/prepare-test
+      with:
+        version: nightly-latest
+    - name: Init
+      uses: github/codeql-action/init@aeisenberg/externalRepoTokenConfigParsing
+      with:
+        tools: ${{ steps.prepare-test.outputs.tools-url }}
+        config-file: ./.github/codeql/codeql-config-registries.yml
+        languages: javascript
+        external-repository-token: ${{ secrets.CUSTOM_CODING_STANDARDS }}
+      env:
+        CODEQL_PASS_CONFIG_TO_CLI: true
+        TEST_MODE: true
+
+    - name: Check that the query pack was downloaded
+      run: |
+        ls -lR $RUNNER_TEMP/codeql_databases
+        ls -lR $RUNNER_TEMP/codeql_databases/temp/external-repos/0-custom-coding-standards/find-literals.ql
+
+  pass-without-config-parse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+    - name: Prepare test
+      id: prepare-test
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ./.github/prepare-test
+      with:
+        version: nightly-latest
+    - name: Init
+      uses: github/codeql-action/init@aeisenberg/externalRepoTokenConfigParsing
+      with:
+        tools: ${{ steps.prepare-test.outputs.tools-url }}
+        config-file: ./.github/codeql/codeql-config-registries.yml
+        languages: javascript
+        external-repository-token: ${{ secrets.CUSTOM_CODING_STANDARDS }}
+      env:
+        CODEQL_PASS_CONFIG_TO_CLI: false
+        TEST_MODE: true
+
+    - name: Check that the query pack was downloaded
+      run: |
+        ls -lR $RUNNER_TEMP/aeisenberg/custom-coding-standards
+        ls -lR $RUNNER_TEMP/aeisenberg/custom-coding-standards/main/find-literals.ql
+
+  fail-with-config-parse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+    - name: Prepare test
+      id: prepare-test
+      uses: ./.github/prepare-test
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        version: nightly-latest
+    - name: Init
+      uses: github/codeql-action/init@aeisenberg/externalRepoTokenConfigParsing
+      continue-on-error: true
+      id: init
+      with:
+        tools: ${{ steps.prepare-test.outputs.tools-url }}
+        config-file: ./.github/codeql/codeql-config-registries.yml
+        languages: javascript
+        external-repository-token: BAD-TOKEN
+      env:
+        CODEQL_PASS_CONFIG_TO_CLI: true
+        TEST_MODE: true
+
+    - name: Check that the there was a failure
+      if: steps.init.outcome == 'success'
+      run: |
+        echo Should not have downloaded the query pack
+        ls -lR $RUNNER_TEMP/external-repos/0-aeisenberg/custom-coding-standards
+        exit 1
+
+  fail-without-config-parse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+    - name: Prepare test
+      id: prepare-test
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ./.github/prepare-test
+      with:
+        version: nightly-latest
+    - name: Init
+      id: init
+      uses: github/codeql-action/init@aeisenberg/externalRepoTokenConfigParsing
+      continue-on-error: true
+      with:
+        tools: ${{ steps.prepare-test.outputs.tools-url }}
+        config-file: ./.github/codeql/codeql-config-registries.yml
+        languages: javascript
+        external-repository-token: BAD-TOKEN
+      env:
+        CODEQL_PASS_CONFIG_TO_CLI: false
+        TEST_MODE: true
+
+    - name: Check that the there was a failure
+      if: steps.init.outcome == 'success'
+      run: |
+        echo Should not have downloaded the query pack
+        ls -lR $RUNNER_TEMP/aeisenberg/custom-coding-standards
+        exit 1
