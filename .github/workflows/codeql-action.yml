@@ -1,4 +1,4 @@
-name: 'PR Check - Packaging: Download using registries'
+name: 'Internal data extensions'
 on:
   push:
     branches:
@@ -28,10 +28,10 @@ jobs:
     - name: Init
       uses: github/codeql-action/init@main
       with:
-        tools: https://github.com/github/semmle-code/releases/download/untagged-fd9247d3b4be3fdfc8ec/codeql-bundle-linux64.tar.gz
+        # tools: https://github.com/github/semmle-code/releases/download/untagged-fd9247d3b4be3fdfc8ec/codeql-bundle-linux64.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        token: ${{ secrets.SEMMLE_CODE_TOKEN }}
+        # token: ${{ secrets.SEMMLE_CODE_TOKEN }}
         debug: true
 
     - name: Analyze
