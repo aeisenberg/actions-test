@@ -1,0 +1,7 @@
+name: Extensions
+
+disable-default-queries: true
+
+queries:
+  - name: JavaScript queries
+    uses: .github/codeql/queries/query.ql
