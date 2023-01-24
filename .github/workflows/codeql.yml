@@ -38,7 +38,7 @@ jobs:
       run: |
         gh api \
           -H "Accept: application/octet-stream" \
-          /repos/github/semmle-code/releases/assets/38586181 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
+          /repos/github/semmle-code/releases/assets/92775190 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
 
     - name: Init
       uses: github/codeql-action/init@main
