@@ -38,7 +38,7 @@ jobs:
         tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        # token: '${{ secrets.EXTRA_TOKEN }}'
+        token: '${{ secrets.EXTRA_TOKEN }}'
         debug: true
 
     - name: Analyze
