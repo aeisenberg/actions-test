@@ -27,7 +27,7 @@ jobs:
     env:
       TEST_MODE: true
       GITHUB_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
-      CODEQL_PASS_CONFIG_TO_CLI: true
+      CODEQL_PASS_CONFIG_TO_CLI: false
 
     steps:
     - name: Check out repository
