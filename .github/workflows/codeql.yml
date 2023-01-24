@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEST_MODE: true
-      GITHUB_TOKEN: '${{ secrets.SEMMLE_CODE_TOKEN }}'
+      GITHUB_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
 
     steps:
     - name: Check out repository
@@ -38,7 +38,7 @@ jobs:
         # tools: https://github.com/github/semmle-code/releases/download/untagged-fd9247d3b4be3fdfc8ec/codeql-bundle-linux64.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        token: '${{ secrets.SEMMLE_CODE_TOKEN }}'
+        # token: '${{ secrets.EXTRA_TOKEN }}'
         debug: true
 
     - name: Analyze
