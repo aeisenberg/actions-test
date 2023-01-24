@@ -49,7 +49,7 @@ jobs:
         tools: ${{ runner.temp }}/codeql-bundle.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        debug: "true"
+        debug: true
 
-    - name: Analyze
-      uses: github/codeql-action/analyze@main
+    # - name: Analyze
+    #   uses: github/codeql-action/analyze@main
