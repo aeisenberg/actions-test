@@ -15,6 +15,6 @@ from
   boolean b,
   float f,
   string s,
-  MethodCall mc
-where testExtensible(i, b, f, s) and mc.getName() = "log"
-select "Value: " + i + b + f + s, mc
+  Module m
+where testExtensible(i, b, f, s) and m.getName().length() > 0
+select "Value: " + i + b + f + s, m
