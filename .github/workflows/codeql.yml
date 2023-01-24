@@ -27,7 +27,7 @@ jobs:
     env:
       TEST_MODE: true
       GITHUB_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
-      CODEQL_PASS_CONFIG_TO_CLI: false
+      CODEQL_PASS_CONFIG_TO_CLI: true
 
     steps:
     - name: Check out repository
@@ -49,7 +49,7 @@ jobs:
         tools: ${{ runner.temp }}/codeql-bundle.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        debug: true
+        debug: "true"
 
     - name: Analyze
       uses: github/codeql-action/analyze@main
