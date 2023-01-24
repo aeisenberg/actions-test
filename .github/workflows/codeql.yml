@@ -35,7 +35,7 @@ jobs:
     - name: Init
       uses: github/codeql-action/init@main
       with:
-        tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20221223/codeql-bundle.tar.gz
+        tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
         # token: '${{ secrets.EXTRA_TOKEN }}'
