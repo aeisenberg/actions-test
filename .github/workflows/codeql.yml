@@ -32,15 +32,22 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v3
 
+    - name: Download CLI
+      env:
+        GH_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
+      run: |
+        gh api \
+          -H "Accept: application/octet-stream" \
+          /repos/github/semmle-code/releases/assets/38586181 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
+
     - name: Init
       uses: github/codeql-action/init@main
       with:
         # tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         # tools: https://api.github.com/repos/github/semmle-code/releases/assets/38586181
-        tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20230123/codeql-bundle-linux64.tar.gz
+        tools: ${{ runner.temp }}/codeql-bundle.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
-        token: '${{ secrets.EXTRA_TOKEN }}'
         debug: true
 
     - name: Analyze
