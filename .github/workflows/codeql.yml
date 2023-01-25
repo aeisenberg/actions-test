@@ -45,7 +45,7 @@ jobs:
         ls -l "$RUNNER_TEMP/codeql-bundle.zip"
         unzip "$RUNNER_TEMP/codeql-bundle.zip" -d "$RUNNER_TEMP/codeql-bundle"
         tar -czf "$RUNNER_TEMP/codeql-bundle.tar.gz" -C "$RUNNER_TEMP/codeql-bundle" .
-        "$RUNNER_TEMP/codeql-bundle/codeql" pack install codeql/javascript-all
+        "$RUNNER_TEMP/codeql-bundle/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
 
     - name: Init
       uses: github/codeql-action/init@main
