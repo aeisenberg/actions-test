@@ -39,13 +39,13 @@ jobs:
       run: |
         gh api \
           -H "Accept: application/octet-stream" \
-          /repos/github/semmle-code/releases/assets/87232463 > "$RUNNER_TEMP/codeql-bundle.zip"
+          /repos/github/semmle-code/releases/assets/93023662 > "$RUNNER_TEMP/codeql-bundle.zip"
 
         echo "Downloaded to $RUNNER_TEMP/codeql-bundle.zip"
         ls -l "$RUNNER_TEMP/codeql-bundle.zip"
         unzip "$RUNNER_TEMP/codeql-bundle.zip" -d "$RUNNER_TEMP/codeql-bundle"
         tar -czf "$RUNNER_TEMP/codeql-bundle.tar.gz" -C "$RUNNER_TEMP/codeql-bundle" .
-        "$RUNNER_TEMP/codeql-bundle/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
+        "$RUNNER_TEMP/codeql-bundle/codeql/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
 
     - name: Init
       uses: github/codeql-action/init@main
