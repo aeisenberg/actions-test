@@ -41,6 +41,9 @@ jobs:
           -H "Accept: application/octet-stream" \
           /repos/github/semmle-code/releases/assets/87232463 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
 
+        echo "Downloaded to $RUNNER_TEMP/codeql-bundle.tar.gz"
+        ls -l "$RUNNER_TEMP/codeql-bundle.tar.gz"
+
     - name: Init
       uses: github/codeql-action/init@main
       with:
