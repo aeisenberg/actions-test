@@ -39,7 +39,7 @@ jobs:
       run: |
         gh api \
           -H "Accept: application/octet-stream" \
-          /repos/github/semmle-code/releases/assets/92775190 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
+          /repos/github/semmle-code/releases/assets/87232463 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
 
     - name: Init
       uses: github/codeql-action/init@main
@@ -50,6 +50,13 @@ jobs:
         config-file: ./.github/codeql/codeql-config.yml
         languages: javascript
         debug: true
+        db-location: ${{ runner.temp }}/codeql-database
 
     # - name: Analyze
     #   uses: github/codeql-action/analyze@main
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: codeql-database
+        path: ${{ runner.temp }}/codeql-database
