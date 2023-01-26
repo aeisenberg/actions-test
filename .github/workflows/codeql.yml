@@ -39,7 +39,7 @@ jobs:
       run: |
         gh api \
           -H "Accept: application/octet-stream" \
-          /repos/github/semmle-code/releases/assets/93023662 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
+          /repos/github/semmle-code/releases/assets/93061909 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
 
         # echo "Downloaded to $RUNNER_TEMP/codeql-bundle.zip"
         # ls -l "$RUNNER_TEMP/codeql-bundle.zip"
