@@ -12,7 +12,7 @@ paths-ignore:
   - .github/codeql
 packs:
     - github/internal-ruby-codeql
-    - codeql/ruby-queries:codeql-suites/ruby-security-experimental.qls
+    - codeql/ruby-queries@0.5.1:codeql-suites/ruby-security-experimental.qls
 query-filters:
   - exclude:
       id: rb/redos
