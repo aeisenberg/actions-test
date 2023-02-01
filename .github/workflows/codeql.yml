@@ -48,7 +48,7 @@ jobs:
         # "$RUNNER_TEMP/codeql-bundle/codeql/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
 
     - name: Init
-      uses: github/codeql-action/init@aeisenberg/print-std-err
+      uses: github/codeql-action/init@main
       with:
         # tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         # tools: https://api.github.com/repos/github/semmle-code/releases/assets/38586181
@@ -61,11 +61,11 @@ jobs:
     # - name: Analyze
     #   uses: github/codeql-action/analyze@aeisenberg/print-std-err
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: codeql-database
-        path: ${{ runner.temp }}/codeql-database
+    # - name: Upload artifacts
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: codeql-database
+    #     path: ${{ runner.temp }}/codeql-database
 
     - name: Run resolve queries
       run: |
