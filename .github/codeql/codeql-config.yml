@@ -1,7 +1,18 @@
-name: Extensions
+# name: Extensions
+
+# disable-default-queries: true
+
+# queries:
+#   - name: JavaScript queries
+#     uses: ./.github/codeql/queries/query.ql
 
 disable-default-queries: true
-
-queries:
-  - name: JavaScript queries
-    uses: ./.github/codeql/queries/query.ql
+paths-ignore:
+  - test
+  - .github/codeql
+packs:
+    - github/internal-ruby-codeql
+    - codeql/ruby-queries:codeql-suites/ruby-security-experimental.qls
+query-filters:
+  - exclude:
+      id: rb/redos

@@ -1,0 +1,129 @@
+[2023-01-30 09:03:10] This is codeql database create --db-cluster --overwrite -- test-db
+[2023-01-30 09:03:10] Log file was started late.
+[2023-01-30 09:03:10] [PROGRESS] database create> Initializing databases at /Users/andrew.eisenberg/Eclipse/git-repos/actions-test/test-db.
+[2023-01-30 09:03:10] Running plumbing command: codeql database init --overwrite --db-cluster --source-root=/Users/andrew.eisenberg/Eclipse/git-repos/actions-test --allow-missing-source-root=false --allow-already-existing -- /Users/andrew.eisenberg/Eclipse/git-repos/actions-test/test-db
+[2023-01-30 09:03:10] Calling plumbing command: codeql resolve languages --format=json
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/.codeqlmanifest.json
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/go/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/python/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/java/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/html/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/xml/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/properties/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/cpp/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/csv/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/csharp/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/javascript/codeql-extractor.yml.
+[2023-01-30 09:03:10] [DETAILS] resolve languages> Parsing /Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/ruby/codeql-extractor.yml.
+[2023-01-30 09:03:10] Plumbing command codeql resolve languages completed:
+                      {
+                        "extractors" : {
+                          "go" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/go"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/python"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/html"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/xml"
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/properties"
+                            }
+                          ],
+                          "cpp" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/cpp"
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/csv"
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction.",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "cil" : {
+                                  "title" : "Whether to enable CIL extraction.",
+                                  "description" : "A value indicating, whether CIL extraction should be enabled. The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/javascript",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "/Users/andrew.eisenberg/.local/share/gh/extensions/gh-codeql/dist/release/v2.12.0/ruby"
+                            }
+                          ]
+                        }
+                      }
+[2023-01-30 09:03:10] Exception caught at top level: Failed to auto-detect language(s) as the source path could not be recognised as a Git repository, please specify them manually using --language.
+                      com.semmle.cli2.database.InitCommand.getRepository(InitCommand.java:401)
+                      com.semmle.cli2.database.InitCommand.getOrAutodetectLanguages(InitCommand.java:348)
+                      com.semmle.cli2.database.InitCommand.executeSubcommand(InitCommand.java:169)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.PlumbingRunner.run(PlumbingRunner.java:109)
+                      com.semmle.cli2.picocli.SubcommandCommon.runPlumbingInProcess(SubcommandCommon.java:188)
+                      com.semmle.cli2.database.CreateCommand.executeSubcommand(CreateCommand.java:84)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:561)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:225)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:234)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:100)
