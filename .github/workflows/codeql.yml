@@ -48,12 +48,12 @@ jobs:
         # "$RUNNER_TEMP/codeql-bundle/codeql/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
 
     - name: Init
-      uses: github/codeql-action/init@main
+      uses: github/codeql-action/init@henrymercer/fix/not-all-bundle-urls-contain-tag
       with:
         # tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         # tools: https://api.github.com/repos/github/semmle-code/releases/assets/38586181
         # tools: ${{ runner.temp }}/codeql-bundle.tar.gz
-        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-20230120/codeql-bundle.tar.gz
+        tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/untagged-9b0f002edc6e08260e8f/codeql-bundle-linux64.tar.gz
         config-file: ./.github/codeql/codeql-config.yml
         languages: ruby
         debug: true
