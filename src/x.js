@@ -1,4 +1,4 @@
 console.log('Hello, world.')
 console.log('Hello, world.')
 console.log('Hello, world.')
-// this is a comment
+// This is a better comment
