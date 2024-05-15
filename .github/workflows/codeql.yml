@@ -48,7 +48,7 @@ jobs:
         # "$RUNNER_TEMP/codeql-bundle/codeql/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
 
     - name: Init
-      uses: github/codeql-action/init@henrymercer/fix/not-all-bundle-urls-contain-tag
+      uses: github/codeql-action/init@main
       with:
         # tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         # tools: https://api.github.com/repos/github/semmle-code/releases/assets/38586181
@@ -59,8 +59,8 @@ jobs:
         debug: true
         db-location: ${{ runner.temp }}/codeql-database
 
-    # - name: Analyze
-    #   uses: github/codeql-action/analyze@aeisenberg/print-std-err
+    - name: Analyze
+      uses: github/codeql-action/analyze@main
 
     # - name: Upload artifacts
     #   uses: actions/upload-artifact@v2
