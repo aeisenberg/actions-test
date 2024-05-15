@@ -2,9 +2,9 @@
 
 # disable-default-queries: true
 
-# queries:
-#   - name: JavaScript queries
-#     uses: ./.github/codeql/queries/query.ql
+queries:
+  - name: Non-queries
+    uses: ./.github/codeql/queries/hucairz.ql
 
 disable-default-queries: true
 paths-ignore:
